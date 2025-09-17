@@ -1,0 +1,15 @@
+dbtlearn:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'  # Use the exact name from ODBC
+      host: localhost
+      port: 1433
+      user: sa
+      password: "NewStrong!Pass123"
+      database: AIRBNB
+      schema: RAW
+      threads: 1
+      encrypt: True
+      trust_cert: True
