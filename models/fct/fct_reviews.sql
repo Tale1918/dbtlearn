@@ -1,7 +1,7 @@
 {{
   config(
-    materialized = 'incremental',
-    on_schema_change = 'fail'
+    materialized='incremental',
+    on_schema_change='fail'
   )
 }}
 
@@ -9,15 +9,17 @@
     SELECT *
     FROM {{ ref('src_reviews') }}
 )
-
 SELECT
-    *
+    listing_id,
+    review_date,
+    reviewer_name,
+    review_text,
+    review_sentiment
 FROM src_reviews
 WHERE review_text IS NOT NULL
-
 {% if is_incremental() %}
   AND review_date > (
-      SELECT MAX(review_date) 
+      SELECT MAX(review_date)
       FROM {{ this }}
   )
 {% endif %}

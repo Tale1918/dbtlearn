@@ -1,6 +1,12 @@
+{{
+  config(
+    materialized='table'
+  )
+}}
+
 ;WITH src_listings AS (
     SELECT *
-    FROM {{ ref("src_listings") }}
+    FROM {{ ref('src_listings') }}
 )
 SELECT 
     listing_id,
