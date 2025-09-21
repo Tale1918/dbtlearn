@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: airbnb        # Source name used in models
+    schema: raw         # Schema in your warehouse
+    tables:
+      - name: listings       # Logical name for dbt
+        identifier: raw_listings   # Actual table name in the warehouse
+      - name: hosts
+        identifier: raw_hosts
+      - name: reviews
+        identifier: raw_reviews
+        loaded_at_field: date       # Field indicating last loaded timestamp
+        freshness:
+          warn_after: 
+            count: 1
+            period: hour
+          error_after: 
+            count: 24
+            period: hour
