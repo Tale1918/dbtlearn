@@ -28,6 +28,7 @@ models:
                 - 'Shared room'
                 - 'Hotel room'
       - name: minimum_nights
-        description: '{{ doc("dim_listing_cleansed_minimum_nights") }}'
+        description: "{{ doc('dim_listing_cleansed_minimum_nights') }}"
         tests:
-          - positive_value
+         - positive_value
+
