@@ -8,6 +8,10 @@ version: '1.0.0'
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbtlearn'
 
+# This hook runs before any models are executed
+on-run-start:
+  - "{{ create_reporter_role() }}"
+
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -34,6 +38,6 @@ models:
   dbtlearn:
     +materialized: view
     +post_hook:
-      - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
+      - "GRANT SELECT ON {{ this }} TO [REPORTER]"
     dim:
       +materialized: table 
