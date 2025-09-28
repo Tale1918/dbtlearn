@@ -5,11 +5,11 @@ sources:
     schema: raw         # Schema in your warehouse
     tables:
       - name: listings       # Logical name for dbt
-        identifier: raw_listings   # Actual table name in the warehouse
+        identifier: raw_listings1   # Actual table name in the warehouse
       - name: hosts
-        identifier: raw_hosts
+        identifier: raw_hosts1
       - name: reviews
-        identifier: raw_reviews
+        identifier: raw_reviews1
         loaded_at_field: date       # Field indicating last loaded timestamp
         freshness:
           warn_after: 
